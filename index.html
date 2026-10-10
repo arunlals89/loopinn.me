@@ -1,0 +1,560 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Loopinn — Meet the people around you</title>
+  <meta name="description" content="Loopinn shows you real people within 1 km — in a crowd, a new city or your own neighborhood. Spot someone, send a Loop, and chat the moment they loop you back. Coming soon to iOS & Android.">
+  <meta name="theme-color" content="#06040F">
+  <link rel="canonical" href="https://www.loopinn.me/">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Loopinn">
+  <meta property="og:title" content="Loopinn — Your next hello is 300 meters away">
+  <meta property="og:description" content="See who's around within 1 km. Send a Loop. Chat when it's mutual. Join the early list.">
+  <meta property="og:url" content="https://www.loopinn.me/">
+  <meta property="og:image" content="https://www.loopinn.me/assets/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Loopinn — Your next hello is 300 meters away">
+  <meta name="twitter:description" content="See who's around within 1 km. Send a Loop. Chat when it's mutual.">
+  <meta name="twitter:image" content="https://www.loopinn.me/assets/og-image.png">
+
+  <link rel="icon" href="assets/logo/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/logo/favicon-32.png">
+  <link rel="apple-touch-icon" href="assets/logo/apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <script>document.documentElement.classList.add('js')</script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Loopinn",
+    "url": "https://www.loopinn.me/",
+    "logo": "https://www.loopinn.me/assets/logo/icon-512.png",
+    "description": "A proximity-based app for meeting people nearby."
+  }
+  </script>
+</head>
+<body>
+
+<!-- Icon sprite (Lucide-style, stroke icons) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></symbol>
+  <symbol id="i-heart" viewBox="0 0 24 24"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></symbol>
+  <symbol id="i-chat" viewBox="0 0 24 24"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></symbol>
+  <symbol id="i-eye-off" viewBox="0 0 24 24"><path d="M9.88 9.88a3 3 0 1 0 4.24 4.24"/><path d="M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 10 7 10 7a13.16 13.16 0 0 1-1.67 2.68"/><path d="M6.61 6.61A13.526 13.526 0 0 0 2 12s3 7 10 7a9.74 9.74 0 0 0 5.39-1.61"/><line x1="2" x2="22" y1="2" y2="22"/></symbol>
+  <symbol id="i-sparkles" viewBox="0 0 24 24"><path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3Z"/></symbol>
+  <symbol id="i-radar" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/><path d="M12 12 19 5"/></symbol>
+  <symbol id="i-users" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
+  <symbol id="i-camera" viewBox="0 0 24 24"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3z"/><circle cx="12" cy="13" r="3"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24"><rect width="18" height="11" x="3" y="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></symbol>
+  <symbol id="i-zap" viewBox="0 0 24 24"><path d="M13 2 3 14h9l-1 8 10-12h-9z"/></symbol>
+  <symbol id="i-flag" viewBox="0 0 24 24"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" x2="4" y1="22" y2="15"/></symbol>
+  <symbol id="i-bell" viewBox="0 0 24 24"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+  <symbol id="i-verified" viewBox="0 0 24 24"><path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z"/><path d="m9 12 2 2 4-4"/></symbol>
+  <symbol id="i-map" viewBox="0 0 24 24"><polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"/><line x1="9" x2="9" y1="3" y2="18"/><line x1="15" x2="15" y1="6" y2="21"/></symbol>
+  <symbol id="i-share" viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" x2="15.42" y1="13.51" y2="17.49"/><line x1="15.41" x2="8.59" y1="6.51" y2="10.49"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14"/><path d="M5 12h14"/></symbol>
+  <symbol id="i-send" viewBox="0 0 24 24"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24"><rect width="14" height="20" x="5" y="2" rx="2"/><path d="M12 18h.01"/></symbol>
+</svg>
+
+<div class="bg-glow" aria-hidden="true"><i></i><i></i><i></i></div>
+
+<!-- ───────────── NAV ───────────── -->
+<header class="nav" id="nav">
+  <div class="container nav-inner">
+    <a class="brand" href="#top" aria-label="Loopinn home">
+      <img src="assets/logo/loopinn-wordmark-sm.png" alt="Loopinn" width="480" height="150">
+    </a>
+    <nav class="nav-links" id="nav-links" aria-label="Primary">
+      <a href="#how">How it works</a>
+      <a href="#try">Try the radar</a>
+      <a href="#features">Features</a>
+      <a href="#safety">Safety</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <a class="btn btn-primary btn-sm nav-cta" href="#waitlist">Join the waitlist</a>
+    <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links"><span></span><span></span></button>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- ───────────── HERO ───────────── -->
+<section class="hero">
+  <img class="hero-swirl" src="assets/logo/loopinn-mark.png" alt="" aria-hidden="true">
+  <div class="container hero-grid">
+
+    <div class="hero-copy">
+      <span class="pill reveal"><span class="live-dot"></span> Launching soon · iOS &amp; Android</span>
+      <h1 class="reveal d1">Your next hello is <span class="grad-text">300&nbsp;meters</span> away.</h1>
+      <p class="lead reveal d2">Loopinn shows you real people nearby — in a crowd, in a new city, or on your own street. Spot someone, send a <strong>Loop</strong>, and start chatting the moment they loop you back.</p>
+
+      <form class="waitlist reveal d3" data-waitlist data-source="hero" novalidate>
+        <label class="sr-only" for="email-hero">Email address</label>
+        <input id="email-hero" name="email" type="email" inputmode="email" autocomplete="email" placeholder="Enter your email" required>
+        <input class="hp" type="text" name="company" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <button class="btn btn-primary" type="submit"><span>Get early access</span><svg class="ico"><use href="#i-arrow"/></svg></button>
+        <p class="form-msg" role="status" aria-live="polite"></p>
+      </form>
+
+      <ul class="trust reveal d4">
+        <li><svg class="ico"><use href="#i-radar"/></svg>1 km radius, your call</li>
+        <li><svg class="ico"><use href="#i-lock"/></svg>Exact location never shared</li>
+        <li><svg class="ico"><use href="#i-chat"/></svg>Chat only when it's mutual</li>
+      </ul>
+
+      <div class="stores reveal d4">
+        <span class="store" aria-disabled="true"><svg class="ico"><use href="#i-phone"/></svg><span><small>Coming soon to the</small>App Store</span></span>
+        <span class="store" aria-disabled="true"><svg class="ico"><use href="#i-phone"/></svg><span><small>Coming soon to</small>Google Play</span></span>
+      </div>
+    </div>
+
+    <div class="hero-visual reveal d2">
+      <div class="phone-tilt" id="tilt">
+        <div class="phone hero-phone" style="--pw: min(318px, 76vw)">
+          <div class="phone-island"></div>
+          <div class="screen map-screen">
+            <div class="statusbar"><b>9:41</b><span class="sb-icons"><i></i><i></i><i class="batt"></i></span></div>
+
+            <div class="map-top glass">
+              <span class="map-top-title"><svg class="ico"><use href="#i-radar"/></svg>Nearby</span>
+              <span class="map-top-r"><i class="live-dot"></i>1 km</span>
+            </div>
+
+            <div class="radar" aria-hidden="true">
+              <i class="ring r1"></i><i class="ring r2"></i><i class="ring r3"></i>
+              <i class="sweep"></i><i class="wave w1"></i><i class="wave w2"></i>
+            </div>
+            <div class="you" aria-hidden="true"><i></i></div>
+
+            <button class="pin is-selected" data-person="maya" style="left:67%;top:35%" aria-label="Maya, 250 m away"><img src="assets/img/av-maya.webp" alt="" loading="lazy"><em>250 m</em></button>
+            <button class="pin" data-person="ava" style="left:24%;top:29%" aria-label="Ava, 300 m away"><img src="assets/img/av-priya.webp" alt="" loading="lazy"></button>
+            <button class="pin" data-person="daniel" style="left:80%;top:54%" aria-label="Daniel, 400 m away"><img src="assets/img/av-daniel.webp" alt="" loading="lazy"></button>
+            <button class="pin" data-person="leo" style="left:34%;top:53%" aria-label="Leo, 200 m away"><img src="assets/img/av-leo.webp" alt="" loading="lazy"></button>
+            <button class="pin" data-person="zoe" style="left:17%;top:61%" aria-label="Zoe, 700 m away"><img src="assets/img/av-zoe.webp" alt="" loading="lazy"></button>
+            <button class="pin" data-person="sofia" style="left:52%;top:23%" aria-label="Sofia, 550 m away"><img src="assets/img/av-sofia.webp" alt="" loading="lazy"></button>
+            <button class="pin" data-person="theo" style="left:87%;top:30%" aria-label="Theo, 850 m away"><img src="assets/img/av-kofi.webp" alt="" loading="lazy"></button>
+
+            <div class="sheet glass" id="hero-sheet">
+              <div class="sheet-row">
+                <img id="hs-img" class="sheet-av" src="assets/img/av-maya.webp" alt="">
+                <div class="sheet-id">
+                  <b><span id="hs-name">Maya, 24</span><svg class="ico verified"><use href="#i-verified"/></svg></b>
+                  <small id="hs-meta">≈ 250 m away · Climbing, Coffee</small>
+                </div>
+              </div>
+              <button class="sheet-cta" id="hs-cta" type="button"><svg class="ico"><use href="#i-sparkles"/></svg><span>Loop them in</span></button>
+            </div>
+          </div>
+        </div>
+
+        <div class="float f-notif glass">
+          <img src="assets/img/av-maya.webp" alt="">
+          <div><b>Maya looped you back</b><small>It's a match — say hi ✨</small></div>
+        </div>
+        <div class="float f-count glass">
+          <div class="stack"><img src="assets/img/av-sam.webp" alt=""><img src="assets/img/av-nora.webp" alt=""><img src="assets/img/av-elena.webp" alt=""></div>
+          <div><b>6 people</b><small>within 500 m right now</small></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───────────── PLACES MARQUEE ───────────── -->
+<section class="marquee" aria-label="Places Loopinn is made for">
+  <div class="marquee-track">
+    <span>At a concert</span><span>New in town</span><span>Co-working day</span><span>Airport layover</span><span>Festival grounds</span><span>Campus</span><span>Sunday brunch</span><span>Hostel common room</span><span>Beach club</span><span>Rooftop party</span>
+    <span>At a concert</span><span>New in town</span><span>Co-working day</span><span>Airport layover</span><span>Festival grounds</span><span>Campus</span><span>Sunday brunch</span><span>Hostel common room</span><span>Beach club</span><span>Rooftop party</span>
+  </div>
+</section>
+
+<!-- ───────────── HOW IT WORKS ───────────── -->
+<section class="section" id="how">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">How it works</span>
+      <h2>From “who's that?” to “let's go” in four taps.</h2>
+      <p>No endless swiping. No cold DMs. Just the people who are actually near you — and a simple, human way to say hi.</p>
+    </div>
+
+    <ol class="steps">
+      <li class="step glass reveal">
+        <span class="step-n">01</span>
+        <span class="step-ico"><svg class="ico"><use href="#i-radar"/></svg></span>
+        <h3>Go live</h3>
+        <p>Switch on your Radar and pick how far you want to look — from 100&nbsp;m to 1&nbsp;km. Public profiles only.</p>
+      </li>
+      <li class="step glass reveal d1">
+        <span class="step-n">02</span>
+        <span class="step-ico"><svg class="ico"><use href="#i-pin"/></svg></span>
+        <h3>Spot someone</h3>
+        <p>People nearby glow up on a premium live map. Tap an avatar to see photos, bio and what they're into.</p>
+      </li>
+      <li class="step glass reveal d2">
+        <span class="step-n">03</span>
+        <span class="step-ico"><svg class="ico"><use href="#i-sparkles"/></svg></span>
+        <h3>Send a Loop</h3>
+        <p>One tap to ask for a coffee, a walk or a dance. Add a vibe. They get a notification instantly.</p>
+      </li>
+      <li class="step glass reveal d3">
+        <span class="step-n">04</span>
+        <span class="step-ico"><svg class="ico"><use href="#i-heart"/></svg></span>
+        <h3>It's a Loop!</h3>
+        <p>They accept, the screen lights up, and chat opens. Meet where you both are — in public, on your terms.</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- ───────────── INTERACTIVE RADAR DEMO ───────────── -->
+<section class="section try" id="try">
+  <div class="container try-grid">
+    <div class="try-left">
+      <div class="section-head left reveal">
+        <span class="eyebrow">Try it — it's live</span>
+        <h2>Drag the radius. <span class="grad-text">Find your people.</span></h2>
+        <p>This is a taste of the real thing. Widen or shrink your radius, tap someone, and send a Loop.</p>
+      </div>
+
+      <div class="slider glass reveal d1">
+        <div class="slider-top">
+          <label for="radius">Search radius</label>
+          <output id="radius-out" for="radius"><b>1 km</b></output>
+        </div>
+        <input id="radius" type="range" min="100" max="1000" step="10" value="1000" aria-describedby="radius-count">
+        <div class="slider-scale"><span>100 m</span><span>500 m</span><span>1 km</span></div>
+        <p class="slider-count" id="radius-count"><span id="count-num">12</span> people in range</p>
+      </div>
+
+      <div class="pcard glass reveal d2" id="pcard" aria-live="polite">
+        <div class="pcard-empty" id="pcard-empty">
+          <svg class="ico"><use href="#i-pin"/></svg>
+          <p><b>Tap an avatar on the radar</b><br>to see their profile and send a Loop.</p>
+        </div>
+        <div class="pcard-body" id="pcard-body" hidden>
+          <div class="pcard-head">
+            <img id="pc-img" src="" alt="">
+            <div>
+              <h3><span id="pc-name"></span><svg class="ico verified"><use href="#i-verified"/></svg></h3>
+              <small id="pc-dist"></small>
+            </div>
+          </div>
+          <p class="pc-bio" id="pc-bio"></p>
+          <ul class="tags" id="pc-tags"></ul>
+          <div class="vibes" role="radiogroup" aria-label="Pick a vibe">
+            <button type="button" class="vibe is-on" role="radio" aria-checked="true" data-vibe="coffee">☕ Coffee</button>
+            <button type="button" class="vibe" role="radio" aria-checked="false" data-vibe="walk">🚶 Walk</button>
+            <button type="button" class="vibe" role="radio" aria-checked="false" data-vibe="dance">🎶 Dance</button>
+            <button type="button" class="vibe" role="radio" aria-checked="false" data-vibe="food">🍜 Food</button>
+          </div>
+          <button class="btn btn-primary btn-block" id="pc-loop" type="button"><svg class="ico"><use href="#i-sparkles"/></svg><span>Loop them in</span></button>
+        </div>
+      </div>
+    </div>
+
+    <div class="try-right reveal d1">
+      <div class="radar-demo" id="radar-demo">
+        <div class="rd-map"></div>
+        <div class="rd-rings" aria-hidden="true">
+          <i style="--s:25%"><b>250 m</b></i><i style="--s:50%"><b>500 m</b></i><i style="--s:75%"><b>750 m</b></i><i style="--s:100%"><b>1 km</b></i>
+        </div>
+        <div class="rd-range" id="rd-range" aria-hidden="true"></div>
+        <div class="rd-sweep" aria-hidden="true"></div>
+        <div class="rd-you" aria-hidden="true"><img src="assets/logo/loopinn-mark.png" alt=""><span>You</span></div>
+        <div id="rd-pins"></div>
+      </div>
+      <p class="demo-note">Demo profiles · placeholder photos</p>
+    </div>
+  </div>
+</section>
+
+<!-- ───────────── FEATURES (BENTO) ───────────── -->
+<section class="section" id="features">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Features</span>
+      <h2>Built to feel like magic. <span class="grad-text">Designed to feel safe.</span></h2>
+      <p>Everything you need to turn “same place, same time” into a real connection.</p>
+    </div>
+
+    <div class="bento">
+
+      <article class="bcard b-radar glass reveal">
+        <div class="b-copy">
+          <span class="b-ico"><svg class="ico"><use href="#i-radar"/></svg></span>
+          <h3>Live Radar</h3>
+          <p>A living map of public profiles within your radius. Avatars glow, drift and pulse in real time — no lists, no scrolling.</p>
+        </div>
+        <div class="mini-radar" aria-hidden="true">
+          <i class="ring r1"></i><i class="ring r2"></i><i class="ring r3"></i><i class="sweep"></i>
+          <span class="you-dot"></span>
+          <img style="left:70%;top:24%" src="assets/img/av-maya.webp" alt="">
+          <img style="left:22%;top:32%" src="assets/img/av-priya.webp" alt="">
+          <img style="left:78%;top:68%" src="assets/img/av-leo.webp" alt="">
+          <img style="left:30%;top:74%" src="assets/img/av-zoe.webp" alt="">
+          <img style="left:52%;top:12%" src="assets/img/av-daniel.webp" alt="">
+        </div>
+      </article>
+
+      <article class="bcard b-loop glass reveal d1">
+        <span class="b-ico"><svg class="ico"><use href="#i-sparkles"/></svg></span>
+        <h3>Loop In</h3>
+        <p>Our one-tap way to say “let's meet.” Pick a vibe, add a note, and they're pinged instantly.</p>
+        <div class="vibes demo" aria-hidden="true"><span>☕ Coffee</span><span class="on">🚶 Walk</span><span>🎶 Dance</span><span>🍜 Food</span></div>
+        <div class="fake-btn" aria-hidden="true"><svg class="ico"><use href="#i-sparkles"/></svg>Loop them in</div>
+      </article>
+
+      <article class="bcard b-chat glass reveal">
+        <span class="b-ico"><svg class="ico"><use href="#i-chat"/></svg></span>
+        <h3>Mutual-only chat</h3>
+        <p>Chat unlocks only when you both say yes. No spam, no cold openers — and icebreakers when you need them.</p>
+        <div class="bubbles" aria-hidden="true">
+          <span class="bub them">Saw you're here for the gig too 🎶</span>
+          <span class="bub me">Front left, blue jacket!</span>
+          <span class="bub chip">💡 Best concert you've ever been to?</span>
+        </div>
+      </article>
+
+      <article class="bcard b-profile glass reveal d1">
+        <span class="b-ico"><svg class="ico"><use href="#i-camera"/></svg></span>
+        <h3>Profiles with personality</h3>
+        <p>Photos, a bio, interests and little prompts that show who someone is beyond a pin on a map.</p>
+        <div class="photo-fan" aria-hidden="true">
+          <img src="assets/img/av-nora.webp" alt=""><img src="assets/img/av-sam.webp" alt=""><img src="assets/img/av-maya.webp" alt="">
+        </div>
+      </article>
+
+      <article class="bcard b-ghost glass reveal d2">
+        <span class="b-ico"><svg class="ico"><use href="#i-eye-off"/></svg></span>
+        <h3>Ghost Mode</h3>
+        <p>Go invisible any time. Hide at home, at work, or just because you want a quiet day.</p>
+        <div class="toggle-demo" aria-hidden="true"><span class="sw"><i></i></span><b>Visible to people nearby</b></div>
+        <div class="zones" aria-hidden="true"><span>🏠 Home</span><span>💼 Work</span><span>+ Quiet zone</span></div>
+      </article>
+
+      <article class="bcard b-crowd glass reveal">
+        <div class="b-crowd-img" style="background-image:url('assets/img/scene-concert.webp')"></div>
+        <div class="b-crowd-ov"></div>
+        <div class="b-crowd-copy">
+          <span class="b-ico"><svg class="ico"><use href="#i-users"/></svg></span>
+          <h3>Crowd Mode</h3>
+          <p>At gigs, festivals and campuses, Loopinn zooms in on the crowd so you can find your kind of people.</p>
+          <span class="badge"><i class="live-dot"></i>128 people within 1 km</span>
+        </div>
+      </article>
+
+      <article class="bcard b-signin glass reveal d1">
+        <div class="b-copy">
+          <span class="b-ico"><svg class="ico"><use href="#i-zap"/></svg></span>
+          <h3>In and out in 10 seconds</h3>
+          <p>Sign up with Google, Apple or your phone number. A quick, friendly onboarding builds your profile as you go.</p>
+        </div>
+        <div class="auth-demo" aria-hidden="true">
+          <span>Continue with Apple</span><span>Continue with Google</span><span>Use phone number</span>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ───────────── MOMENTS GALLERY ───────────── -->
+<section class="section moments" id="moments">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Wherever people gather</span>
+      <h2>Every crowd is full of people <span class="grad-text">you haven't met yet.</span></h2>
+    </div>
+    <div class="gallery">
+      <figure class="g g1 reveal"><img src="assets/img/scene-concert.webp" alt="Crowd at a concert" loading="lazy"><figcaption><b>Concerts &amp; festivals</b><span>Find the person two rows ahead.</span></figcaption></figure>
+      <figure class="g g2 reveal d1"><img src="assets/img/scene-city.webp" alt="City skyline at dusk" loading="lazy"><figcaption><b>New in town</b><span>Day one, already not alone.</span></figcaption></figure>
+      <figure class="g g3 reveal d1"><img src="assets/img/scene-cowork.webp" alt="People laughing at a co-working table" loading="lazy"><figcaption><b>Co-working days</b><span>Your next collab is at the next desk.</span></figcaption></figure>
+      <figure class="g g4 reveal"><img src="assets/img/scene-friends-sea.webp" alt="Friends sitting by the sea" loading="lazy"><figcaption><b>Trips &amp; hostels</b><span>Travel buddies, instantly.</span></figcaption></figure>
+      <figure class="g g5 reveal d1"><img src="assets/img/scene-pool.webp" alt="People relaxing at a pool party" loading="lazy"><figcaption><b>Parties &amp; pool days</b><span>Say hi before the playlist changes.</span></figcaption></figure>
+      <figure class="g g6 reveal d2"><img src="assets/img/scene-cafe.webp" alt="Cozy cafe table" loading="lazy"><figcaption><b>Coffee, spontaneously</b><span>Because plans are overrated.</span></figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- ───────────── PROFILE + CHAT PHONES ───────────── -->
+<section class="section" id="profiles">
+  <div class="container profiles-grid">
+    <div class="profiles-copy">
+      <div class="section-head left reveal">
+        <span class="eyebrow">Profiles &amp; chat</span>
+        <h2>Real people. <span class="grad-text">Real personality.</span></h2>
+        <p>Dating-style profiles that make a first impression in seconds — and a chat that opens only when the feeling is mutual.</p>
+      </div>
+      <ul class="checks reveal d1">
+        <li><svg class="ico"><use href="#i-check"/></svg><span><b>Photo galleries &amp; bios</b> — show your world, not just your face.</span></li>
+        <li><svg class="ico"><use href="#i-check"/></svg><span><b>Pick what you're open to</b> — dating, friends or just a hangout.</span></li>
+        <li><svg class="ico"><use href="#i-check"/></svg><span><b>Verified badge</b> — a quick selfie check builds trust.</span></li>
+        <li><svg class="ico"><use href="#i-check"/></svg><span><b>Icebreakers</b> — suggested openers based on what you share.</span></li>
+      </ul>
+    </div>
+
+    <div class="profiles-phones">
+      <div class="phone p-profile reveal" style="--pw: min(280px, 66vw)">
+        <div class="phone-island"></div>
+        <div class="screen prof-screen">
+          <div class="prof-photo" style="background-image:url('assets/img/profile-maya.webp')" role="img" aria-label="Maya's profile photo"></div>
+          <div class="prof-dots"><i class="on"></i><i></i><i></i><i></i></div>
+          <div class="prof-info">
+            <div class="prof-name"><b>Maya, 24</b><svg class="ico verified"><use href="#i-verified"/></svg></div>
+            <div class="prof-meta"><svg class="ico"><use href="#i-pin"/></svg>≈ 250 m away · Open to dating &amp; friends</div>
+            <p>Coffee snob, amateur climber. New in town — show me the best flat white and a view worth the climb.</p>
+            <ul class="tags"><li>Climbing</li><li>Film photography</li><li>Coffee</li><li>Sunsets</li></ul>
+            <div class="prof-cta"><svg class="ico"><use href="#i-sparkles"/></svg>Loop them in</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="phone p-chat reveal d1" style="--pw: min(280px, 66vw)">
+        <div class="phone-island"></div>
+        <div class="screen chat-screen">
+          <div class="chat-top glass">
+            <img src="assets/img/av-maya.webp" alt="">
+            <div><b>Maya</b><small><i class="live-dot"></i>250 m away · looped just now</small></div>
+          </div>
+          <div class="chat-intro">
+            <div class="pair"><span><img src="assets/logo/loopinn-mark.png" alt=""></span><img src="assets/img/av-maya.webp" alt=""></div>
+            <b>It's a Loop!</b><small>You and Maya · 250 m apart</small>
+          </div>
+          <div class="chat-body">
+            <div class="chat-sys"><svg class="ico"><use href="#i-sparkles"/></svg>You looped · ☕ Coffee</div>
+            <div class="bub them">Okay you caught me — I was literally about to find a flat white ☕</div>
+            <div class="bub me">There's a great spot two blocks from the park. Meet in 10?</div>
+            <div class="bub them">Perfect. I'll be the one with the camera 📷</div>
+            <div class="bub me">Great — sharing my Loop with a friend first 💜</div>
+            <div class="bub chip">🛡️ Loop shared with Jess</div>
+          </div>
+          <div class="chat-input glass"><span>Say something nice…</span><i><svg class="ico"><use href="#i-send"/></svg></i></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───────────── LOVE BAND ───────────── -->
+<section class="band" aria-label="Brand statement">
+  <div class="band-img" style="background-image:url('assets/img/scene-couple-happy.webp')"></div>
+  <div class="band-ov"></div>
+  <div class="container band-copy reveal">
+    <img class="band-mark" src="assets/logo/loopinn-mark.png" alt="">
+    <h2>Some of the best stories start with a <span class="grad-text">stranger.</span></h2>
+    <p>Loopinn is for the moments you wish you'd said hi.</p>
+    <a class="btn btn-primary" href="#waitlist">Be there at launch <svg class="ico"><use href="#i-arrow"/></svg></a>
+  </div>
+</section>
+
+<!-- ───────────── SAFETY ───────────── -->
+<section class="section" id="safety">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Privacy &amp; safety</span>
+      <h2>Meeting strangers should feel <span class="grad-text">exciting, not risky.</span></h2>
+      <p>Safety isn't a settings page here — it's how Loopinn is built.</p>
+    </div>
+    <div class="safety-grid">
+      <article class="scard glass reveal"><span class="b-ico"><svg class="ico"><use href="#i-eye-off"/></svg></span><h3>You choose who sees you</h3><p>Public, or invisible. Switch Ghost Mode on in one tap, and set quiet zones like home and work.</p></article>
+      <article class="scard glass reveal d1"><span class="b-ico"><svg class="ico"><use href="#i-map"/></svg></span><h3>Never your exact spot</h3><p>People see an approximate distance and a softened pin — never an address or a precise location.</p></article>
+      <article class="scard glass reveal d2"><span class="b-ico"><svg class="ico"><use href="#i-lock"/></svg></span><h3>Mutual by design</h3><p>No unsolicited messages. A chat only opens after both people accept a Loop.</p></article>
+      <article class="scard glass reveal"><span class="b-ico"><svg class="ico"><use href="#i-verified"/></svg></span><h3>Verified &amp; 18+</h3><p>Optional selfie verification earns a badge. Loopinn is strictly for adults.</p></article>
+      <article class="scard glass reveal d1"><span class="b-ico"><svg class="ico"><use href="#i-share"/></svg></span><h3>Share your Loop</h3><p>Send who you're meeting, and where, to a trusted friend with one tap.</p></article>
+      <article class="scard glass reveal d2"><span class="b-ico"><svg class="ico"><use href="#i-flag"/></svg></span><h3>Block &amp; report, fast</h3><p>Two taps to block or report anyone. Reports are reviewed — and bad actors are gone.</p></article>
+    </div>
+  </div>
+</section>
+
+<!-- ───────────── FAQ ───────────── -->
+<section class="section" id="faq">
+  <div class="container faq-wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">FAQ</span>
+      <h2>Good questions.</h2>
+    </div>
+    <div class="faq reveal d1">
+      <details><summary>What exactly is a “Loop”?<svg class="ico"><use href="#i-plus"/></svg></summary><p>A Loop is your one-tap invitation to meet or hang out — coffee, a walk, a dance, whatever you're in the mood for. The other person gets a notification. If they Loop you back, it's a match and chat opens.</p></details>
+      <details><summary>Is Loopinn a dating app?<svg class="ico"><use href="#i-plus"/></svg></summary><p>It's built for real-life connection. You choose what you're open to — dating, new friends or a spontaneous hangout — and it shows on your profile.</p></details>
+      <details><summary>Can people see exactly where I am?<svg class="ico"><use href="#i-plus"/></svg></summary><p>No. Other people only see an approximate distance and a softened pin. Your precise location is never shown, and you can go invisible with Ghost Mode at any time.</p></details>
+      <details><summary>How big is the radius?<svg class="ico"><use href="#i-plus"/></svg></summary><p>You decide, from roughly 100 m up to 1 km. Smaller for a packed venue, larger for a quiet neighborhood.</p></details>
+      <details><summary>How do I sign up?<svg class="ico"><use href="#i-plus"/></svg></summary><p>With Google, Apple or your mobile number. Then a short onboarding to add photos, a bio and what you're looking for.</p></details>
+      <details><summary>When does it launch, and what does it cost?<svg class="ico"><use href="#i-plus"/></svg></summary><p>We're building toward launch on iOS and Android. Pricing isn't final yet — joining the waitlist is free and commits you to nothing. You'll hear from us first.</p></details>
+      <details><summary>Who can use Loopinn?<svg class="ico"><use href="#i-plus"/></svg></summary><p>Adults only (18+). We verify, moderate and make it easy to block or report anyone who makes you uncomfortable.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- ───────────── FINAL CTA ───────────── -->
+<section class="section cta-section" id="waitlist">
+  <div class="container">
+    <div class="cta glass reveal">
+      <img class="cta-swirl" src="assets/logo/loopinn-mark.png" alt="" aria-hidden="true">
+      <span class="eyebrow">Early access</span>
+      <h2>Be the first to <span class="grad-text">loop in.</span></h2>
+      <p>Join the waitlist and we'll tell you the moment Loopinn lands in your city.</p>
+      <form class="waitlist waitlist-lg" data-waitlist data-source="footer" novalidate>
+        <label class="sr-only" for="email-cta">Email address</label>
+        <input id="email-cta" name="email" type="email" inputmode="email" autocomplete="email" placeholder="you@email.com" required>
+        <label class="sr-only" for="city-cta">Your city (optional)</label>
+        <input id="city-cta" name="city" type="text" autocomplete="address-level2" placeholder="Your city (optional)">
+        <input class="hp" type="text" name="company" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <button class="btn btn-primary" type="submit"><span>Join the waitlist</span><svg class="ico"><use href="#i-arrow"/></svg></button>
+        <p class="form-msg" role="status" aria-live="polite"></p>
+      </form>
+      <small class="fineprint">No spam, ever. We only use your email to tell you about Loopinn. <a href="privacy.html">Privacy</a></small>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ───────────── FOOTER ───────────── -->
+<footer class="footer">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <img src="assets/logo/loopinn-wordmark-sm.png" alt="Loopinn" width="480" height="150">
+      <p>Meet the people around you.</p>
+    </div>
+    <nav class="footer-links" aria-label="Footer">
+      <a href="#how">How it works</a><a href="#features">Features</a><a href="#safety">Safety</a><a href="#faq">FAQ</a><a href="privacy.html">Privacy</a>
+    </nav>
+    <p class="copy">© <span id="year">2026</span> Loopinn · <a href="https://www.loopinn.me">loopinn.me</a></p>
+  </div>
+</footer>
+
+<!-- ───────────── MATCH OVERLAY ───────────── -->
+<div class="match" id="match" role="dialog" aria-modal="true" aria-labelledby="match-title" hidden>
+  <div class="match-bg" data-close></div>
+  <div class="confetti" id="confetti" aria-hidden="true"></div>
+  <div class="match-card">
+    <div class="match-avatars">
+      <div class="match-av is-you"><img src="assets/logo/loopinn-mark.png" alt="You"></div>
+      <div class="match-link" aria-hidden="true"><svg class="ico"><use href="#i-heart"/></svg></div>
+      <div class="match-av is-them"><img id="match-img" src="" alt=""></div>
+    </div>
+    <h2 id="match-title" class="grad-text">It's a Loop!</h2>
+    <p id="match-sub">You and Maya are both in.</p>
+    <div class="match-actions">
+      <button class="btn btn-primary" type="button" id="match-hi" data-close>Say hi 👋</button>
+      <button class="btn btn-ghost" type="button" data-close>Keep exploring</button>
+    </div>
+    <small class="match-note">This is a demo of the match moment you'll get in the app.</small>
+  </div>
+</div>
+
+<script src="js/config.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
