@@ -3,8 +3,17 @@
    Palette sampled from the logo wordmark (violet → blue → cyan on near-black).
    Sections: tokens · base · buttons · nav · hero · phone · marquee · how · try
              · bento · moments · profiles · band · safety · faq · cta · footer
-             · match overlay · reveal · responsive
+             · documents (legal/support pages) · match overlay · reveal · responsive
    ========================================================================== */
+
+/* Self-hosted fonts (Latin subset WOFF2, SIL OFL 1.1) — built by scripts/build_web_fonts.py. No third-party requests. */
+@font-face { font-family: "Inter"; font-weight: 400; font-style: normal; font-display: swap; src: url("../assets/fonts/Inter-Regular.woff2") format("woff2"); }
+@font-face { font-family: "Inter"; font-weight: 500; font-style: normal; font-display: swap; src: url("../assets/fonts/Inter-Medium.woff2") format("woff2"); }
+@font-face { font-family: "Inter"; font-weight: 600; font-style: normal; font-display: swap; src: url("../assets/fonts/Inter-SemiBold.woff2") format("woff2"); }
+@font-face { font-family: "Outfit"; font-weight: 500; font-style: normal; font-display: swap; src: url("../assets/fonts/Outfit-Medium.woff2") format("woff2"); }
+@font-face { font-family: "Outfit"; font-weight: 600; font-style: normal; font-display: swap; src: url("../assets/fonts/Outfit-SemiBold.woff2") format("woff2"); }
+@font-face { font-family: "Outfit"; font-weight: 700; font-style: normal; font-display: swap; src: url("../assets/fonts/Outfit-Bold.woff2") format("woff2"); }
+@font-face { font-family: "Outfit"; font-weight: 800; font-style: normal; font-display: swap; src: url("../assets/fonts/Outfit-ExtraBold.woff2") format("woff2"); }
 
 :root {
   --ink: #06040f;
@@ -427,7 +436,40 @@ body::after { /* fine grain */
 .footer-inner { display: grid; grid-template-columns: 1fr auto; gap: 24px 40px; align-items: center; }
 .footer-brand img { height: 36px; width: auto; } .footer-brand p { margin-top: 10px; color: var(--muted); font-size: 15px; }
 .footer-links { display: flex; flex-wrap: wrap; gap: 8px 26px; color: var(--muted); font-size: 15px; } .footer-links a:hover { color: #fff; }
+.safety-more { margin-top: 34px; text-align: center; color: var(--muted); font-size: 16px; } .safety-more a { color: var(--cyan); text-decoration: underline; text-underline-offset: 3px; } .safety-more a:hover { color: #fff; }
+.footer-legal { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 8px 22px; color: var(--faint); font-size: 14px; } .footer-legal a:hover { color: #fff; }
 .copy { grid-column: 1 / -1; color: var(--faint); font-size: 14px; border-top: 1px solid var(--line); padding-top: 22px; } .copy a:hover { color: #fff; }
+
+/* ───────── documents: privacy · terms · guidelines · support · delete-account ───────── */
+.skip-link { position: absolute; left: 16px; top: -60px; z-index: 100; padding: 10px 16px; border-radius: 10px; background: #fff; color: var(--ink); font-weight: 600; } .skip-link:focus { top: 12px; }
+.nav-doc { gap: 20px; } .nav-doc .nav-links { gap: 22px; }
+.doc { max-width: 780px; margin: 0 auto; padding: 118px 0 84px; }
+.doc h1 { font-size: clamp(34px, 5.4vw, 52px); margin-bottom: 10px; }
+.doc .meta { color: var(--faint); font-size: 14.5px; }
+.doc .lede { margin-top: 20px; font-size: 19px; color: #cdc8ea; }
+.doc h2 { font-size: 25px; margin: 52px 0 12px; scroll-margin-top: 92px; }
+.doc h3 { font-size: 18px; margin: 26px 0 6px; color: #fff; }
+.doc p, .doc li, .doc td, .doc th { color: var(--muted); }
+.doc p + p { margin-top: 14px; }
+.doc ul, .doc ol { display: grid; gap: 8px; margin-top: 12px; padding-left: 22px; list-style: disc; } .doc ol { list-style: decimal; }
+.doc li::marker { color: var(--faint); }
+.doc a { color: var(--cyan); text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; } .doc a:hover { color: #fff; }
+.doc strong { color: #fff; font-weight: 600; }
+.doc code { font-size: .92em; padding: 1px 6px; border-radius: 6px; background: var(--glass-2); color: #e7e3ff; }
+.doc .box { margin-top: 26px; padding: 20px 24px; border-radius: var(--r-md); border: 1px solid var(--line); background: var(--glass); }
+.doc .box h2, .doc .box h3 { margin-top: 0; font-size: 18px; }
+.doc .box ul { margin-top: 10px; }
+.doc .box.key { border-left: 3px solid var(--cyan); }
+.doc .box.alert { border-color: rgba(255, 111, 181, .45); background: rgba(255, 111, 181, .06); }
+.doc .toc { columns: 2; column-gap: 32px; padding-left: 20px; margin-top: 8px; list-style: decimal; } .doc .toc li { break-inside: avoid; margin-bottom: 6px; }
+.doc .table-wrap { margin-top: 16px; overflow-x: auto; border-radius: var(--r-md); border: 1px solid var(--line); }
+.doc table { width: 100%; border-collapse: collapse; font-size: 15px; min-width: 560px; }
+.doc th, .doc td { text-align: left; vertical-align: top; padding: 12px 16px; border-bottom: 1px solid var(--line); } .doc th { color: #fff; font-weight: 600; background: var(--glass-2); } .doc tr:last-child td { border-bottom: 0; }
+.doc .cta-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 22px; } .doc .cta-row .btn { text-decoration: none; color: #fff; }
+.doc details { margin-top: 12px; border: 1px solid var(--line); border-radius: var(--r-md); background: var(--glass); } .doc summary { cursor: pointer; padding: 16px 20px; color: #fff; font-weight: 600; font-family: var(--font-display); } .doc details > *:not(summary) { padding: 0 20px 18px; }
+.doc .related { margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--line); display: flex; flex-wrap: wrap; gap: 8px 24px; font-size: 15px; }
+@media (max-width: 640px) { .doc table { min-width: 0; font-size: 14px; } .doc th, .doc td { padding: 10px 12px; } .doc { padding-top: 104px; } .doc .toc { columns: 1; } .nav-doc .nav-links { display: none; } .nav-doc .nav-cta { display: inline-flex; margin-left: auto; } .doc h2 { margin-top: 42px; } }
+@media print { .bg-glow, .nav, .footer, .doc .related, .skip-link { display: none !important; } body { background: #fff; color: #000; } .doc { padding-top: 0; } .doc p, .doc li, .doc td, .doc th, .doc .meta, .doc .lede { color: #222; } .doc h1, .doc h2, .doc h3, .doc strong { color: #000; } .doc a { color: #000; text-decoration: underline; } .doc .box { border-color: #999; background: none; } }
 
 /* ───────── match overlay ───────── */
 .match { position: fixed; inset: 0; z-index: 200; display: grid; place-items: center; padding: 24px; }

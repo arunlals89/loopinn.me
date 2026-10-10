@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.loopinn.me/sitemap.xml
+Sitemap: https://loopinn.me/sitemap.xml
